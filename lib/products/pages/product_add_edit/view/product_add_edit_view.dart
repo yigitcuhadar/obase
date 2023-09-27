@@ -8,6 +8,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:formz/formz.dart';
 import 'package:obase_barcode/core/extensions/context_extension.dart';
 import 'package:obase_barcode/core/extensions/form_extension.dart';
+import 'package:obase_barcode/core/extensions/other_extension.dart';
 import 'package:obase_barcode/core/lang/locale_keys.g.dart';
 import 'package:obase_barcode/products/widgets/delete_product_dialog.dart';
 
@@ -333,22 +334,19 @@ class _ScannerMessagePanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProductAddEditCubit, ProductAddEditState>(
-      buildWhen: (p, c) => p.scannerMessage != c.scannerMessage,
+      buildWhen: (p, c) => p.scannerStatus != c.scannerStatus,
       builder: (context, state) {
-        if (state.scannerMessage.isNotEmpty) {
-          return Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(color: Colors.grey.shade200.withOpacity(0.5)),
-            child: Text(
-              state.scannerMessage,
-              style: TextStyle(color: state.scannerStatus.toColor, fontWeight: FontWeight.bold, fontSize: 12),
-              maxLines: 2,
-              textAlign: TextAlign.center,
-            ),
-          );
-        }
-        return Container();
+        return Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(color: Colors.grey.shade200.withOpacity(0.5)),
+          child: Text(
+            state.scannerStatus.toMessage,
+            style: TextStyle(color: state.scannerStatus.toColor, fontWeight: FontWeight.bold, fontSize: 12),
+            maxLines: 2,
+            textAlign: TextAlign.center,
+          ),
+        );
       },
     );
   }

@@ -84,6 +84,12 @@ abstract class  LocaleKeys {
   static const add_edit_product_message_success_edit = 'add_edit_product.message_success_edit';
   static const add_edit_product_message_failure_add = 'add_edit_product.message_failure_add';
   static const add_edit_product_message_failure_edit = 'add_edit_product.message_failure_edit';
+  static const add_edit_product_barcode_message_initial = 'add_edit_product.barcode_message_initial';
+  static const add_edit_product_barcode_message_scanned = 'add_edit_product.barcode_message_scanned';
+  static const add_edit_product_barcode_message_alreadyInProduct = 'add_edit_product.barcode_message_alreadyInProduct';
+  static const add_edit_product_barcode_message_alreadyInUse = 'add_edit_product.barcode_message_alreadyInUse';
+  static const add_edit_product_barcode_message_failure = 'add_edit_product.barcode_message_failure';
+  static const add_edit_product_barcode_message_success = 'add_edit_product.barcode_message_success';
   static const add_edit_product = 'add_edit_product';
 
 }

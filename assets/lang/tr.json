@@ -102,6 +102,12 @@
         "message_success_add" : "Ürün başarıyla eklendi!",
         "message_success_edit" : "Ürün başarıyla güncellendi!",
         "message_failure_add" : "Ürün ekleme başarısız!",
-        "message_failure_edit" : "Ürün güncelleme başarısız!"
+        "message_failure_edit" : "Ürün güncelleme başarısız!",
+        "barcode_message_initial": "Barkodu taramak için kadraja alın",
+        "barcode_message_scanned": "Barkod tarandı!",
+        "barcode_message_alreadyInProduct": "Barkod zaten ürüne eklendi!",
+        "barcode_message_alreadyInUse": "Barkod başka bir ürün tarafından kullanımda!",
+        "barcode_message_failure": "Barkod ekleme başarısız!",
+        "barcode_message_success": "Barkod başarıyla eklendi!"
     }
 }

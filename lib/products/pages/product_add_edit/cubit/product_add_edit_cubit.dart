@@ -76,8 +76,7 @@ class ProductAddEditCubit extends Cubit<ProductAddEditState> {
     if (value != state.scannedBarcode) {
       emit(state.copyWith(
         scannedBarcode: value,
-        scannerStatus: FormzSubmissionStatus.initial,
-        scannerMessage: '$value scanned!',
+        scannerStatus: AddEditScannerStatus.initial,
       ));
     }
   }
@@ -87,8 +86,7 @@ class ProductAddEditCubit extends Cubit<ProductAddEditState> {
     if (state.barcodes.contains(scannedBarcode)) {
       emit(state.copyWith(
         scannedBarcode: -1,
-        scannerStatus: FormzSubmissionStatus.failure,
-        scannerMessage: '$scannedBarcode has already been added to this product!',
+        scannerStatus: AddEditScannerStatus.alreadyInProduct,
       ));
       return;
     }
@@ -97,8 +95,7 @@ class ProductAddEditCubit extends Cubit<ProductAddEditState> {
       if (barcode != null) {
         emit(state.copyWith(
           scannedBarcode: -1,
-          scannerStatus: FormzSubmissionStatus.failure,
-          scannerMessage: '$scannedBarcode is being used for another product!',
+          scannerStatus: AddEditScannerStatus.alreadyInUse,
         ));
         return;
       }
@@ -108,8 +105,7 @@ class ProductAddEditCubit extends Cubit<ProductAddEditState> {
     } catch (_) {
       emit(state.copyWith(
         scannedBarcode: -1,
-        scannerStatus: FormzSubmissionStatus.failure,
-        scannerMessage: '$scannedBarcode could not be added!',
+        scannerStatus: AddEditScannerStatus.failure,
       ));
       return;
     }
@@ -118,8 +114,7 @@ class ProductAddEditCubit extends Cubit<ProductAddEditState> {
     emit(state.copyWith(
       barcodes: barcodes,
       scannedBarcode: -1,
-      scannerMessage: '$scannedBarcode successfully added!',
-      scannerStatus: FormzSubmissionStatus.success,
+      scannerStatus: AddEditScannerStatus.success,
     ));
   }
 

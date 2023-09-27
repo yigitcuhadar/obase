@@ -1,5 +1,7 @@
 part of 'product_add_edit_cubit.dart';
 
+enum AddEditScannerStatus { initial, scanned, alreadyInProduct, alreadyInUse, failure, success }
+
 class ProductAddEditState extends Equatable {
   final int? id;
   final ProductNameForm name;
@@ -9,9 +11,8 @@ class ProductAddEditState extends Equatable {
   final List<int> barcodes;
   final bool isValid;
   final FormzSubmissionStatus productStatus;
-  final FormzSubmissionStatus scannerStatus;
+  final AddEditScannerStatus scannerStatus;
   final int scannedBarcode;
-  final String scannerMessage;
 
   bool get isAddScreen => id == null;
   bool get isEditScreen => id != null;
@@ -34,9 +35,8 @@ class ProductAddEditState extends Equatable {
     this.barcodes = const [],
     this.isValid = false,
     this.productStatus = FormzSubmissionStatus.initial,
-    this.scannerStatus = FormzSubmissionStatus.initial,
+    this.scannerStatus = AddEditScannerStatus.initial,
     this.scannedBarcode = -1,
-    this.scannerMessage = '',
   });
 
   ProductAddEditState.fromProduct({
@@ -49,9 +49,8 @@ class ProductAddEditState extends Equatable {
         barcodes = product.barcodes,
         isValid = true,
         productStatus = FormzSubmissionStatus.initial,
-        scannerStatus = FormzSubmissionStatus.initial,
-        scannedBarcode = -1,
-        scannerMessage = '';
+        scannerStatus = AddEditScannerStatus.initial,
+        scannedBarcode = -1;
   @override
   List<Object?> get props => [
         id,
@@ -64,7 +63,6 @@ class ProductAddEditState extends Equatable {
         productStatus,
         scannerStatus,
         scannedBarcode,
-        scannerMessage
       ];
 
   ProductAddEditState copyWith({
@@ -76,9 +74,8 @@ class ProductAddEditState extends Equatable {
     List<int>? barcodes,
     bool? isValid,
     FormzSubmissionStatus? productStatus,
-    FormzSubmissionStatus? scannerStatus,
+    AddEditScannerStatus? scannerStatus,
     int? scannedBarcode,
-    String? scannerMessage,
   }) {
     return ProductAddEditState(
       id: id ?? this.id,
@@ -91,7 +88,6 @@ class ProductAddEditState extends Equatable {
       productStatus: productStatus ?? this.productStatus,
       scannerStatus: scannerStatus ?? this.scannerStatus,
       scannedBarcode: scannedBarcode ?? this.scannedBarcode,
-      scannerMessage: scannerMessage ?? this.scannerMessage,
     );
   }
 }

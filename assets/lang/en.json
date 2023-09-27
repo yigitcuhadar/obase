@@ -99,9 +99,15 @@
         "submit_button_add": "Add",
         "submit_button_edit": "Update",
         "delete_button": "Delete",
-        "message_success_add" : "Product successfully added!",
-        "message_success_edit" : "Product successfully updated!",
-        "message_failure_add" : "Product could not be added!",
-        "message_failure_edit" : "Product could not be updated!"
+        "message_success_add": "Product successfully added!",
+        "message_success_edit": "Product successfully updated!",
+        "message_failure_add": "Product could not be added!",
+        "message_failure_edit": "Product could not be updated!",
+        "barcode_message_initial": "Frame to scan the barcode!",
+        "barcode_message_scanned": "Barcode scanned!",
+        "barcode_message_alreadyInProduct": "Barcode has already been added to this product!",
+        "barcode_message_alreadyInUse": "Barcode is being used for another product!",
+        "barcode_message_failure": "Barcode could not be added!",
+        "barcode_message_success": "Barcode successfully added!"
     }
 }
