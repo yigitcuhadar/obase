@@ -64,6 +64,12 @@ final class StocktakingState extends Equatable {
   }
 
   @override
-  List<Object?> get props =>
-      [entries, scannedBarcode, scannedProductId, stockQuantityForm, isStockQuantityValid, submissionStatus];
+  List<Object?> get props => [
+        entries,
+        scannedBarcode,
+        scannedProductId,
+        stockQuantityForm,
+        isStockQuantityValid,
+        submissionStatus,
+      ];
 }

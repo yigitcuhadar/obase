@@ -5,10 +5,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:formz/formz.dart';
 import 'package:ob_product/ob_product.dart';
-import 'package:obase_barcode/products/pages/product_add_edit/view/product_add_edit_page.dart';
+import 'package:obase_barcode/core/extensions/context_extension.dart';
+import 'package:obase_barcode/core/extensions/form_extension.dart';
 
 import '../../../../core/constants/app_contants.dart';
+import '../../../../core/lang/locale_keys.g.dart';
 import '../../../widgets/barcode_scanner.dart';
+import '../../product_add_edit/view/product_add_edit_page.dart';
 import '../cubit/stocktaking_cubit.dart';
 
 class StocktakingAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -19,7 +22,7 @@ class StocktakingAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text('Stocktaking'),
+      title: Text(LocaleKeys.stocktaking_title.locale),
       centerTitle: true,
     );
   }
@@ -40,60 +43,59 @@ class StocktakingBody extends StatelessWidget {
         () => showDialog(context: context, builder: (context) => _buildOngoingDialog(context)),
       );
     }
-    return MultiBlocListener(
-        listeners: [
-          BlocListener<StocktakingCubit, StocktakingState>(
-            listenWhen: (p, c) =>
-                p.submissionStatus != c.submissionStatus && (c.submissionStatus.isFailure || c.submissionStatus.isSuccess),
-            listener: (context, state) {
-              String message = state.submissionStatus.isSuccess ? 'Stocktaking successfully completed!' : 'Stocktaking failed!';
-              ScaffoldMessenger.of(context)
-                ..removeCurrentSnackBar()
-                ..showSnackBar(
-                  SnackBar(
-                    content: Text(message),
-                  ),
-                );
-            },
-          ),
-        ],
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              decoration: const BoxDecoration(border: Border(bottom: BorderSide())),
-              child: BarcodeScanner(
-                onScanned: (value) async {
-                  await context.read<StocktakingCubit>().onBarcodeScanned(value);
-                  if (context.mounted) {
-                    await showDialog(
-                      context: context,
-                      builder: (context) {
-                        return const _ScannedDialog();
-                      },
-                    );
-                  }
-                },
-              ),
+    return BlocListener<StocktakingCubit, StocktakingState>(
+      listenWhen: (p, c) =>
+          p.submissionStatus != c.submissionStatus && (c.submissionStatus.isFailure || c.submissionStatus.isSuccess),
+      listener: (context, state) {
+        String message = state.submissionStatus.isSuccess
+            ? LocaleKeys.stocktaking_message_success.locale
+            : LocaleKeys.stocktaking_message_failure.locale;
+        ScaffoldMessenger.of(context)
+          ..removeCurrentSnackBar()
+          ..showSnackBar(SnackBar(content: Text(message)));
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            decoration: const BoxDecoration(border: Border(bottom: BorderSide())),
+            child: BarcodeScanner(
+              onScanned: (value) async {
+                await context.read<StocktakingCubit>().onBarcodeScanned(value);
+                if (context.mounted) {
+                  await showDialog(
+                    context: context,
+                    builder: (context) {
+                      return const _ScannedDialog();
+                    },
+                  );
+                }
+              },
             ),
-            const _ProductList(),
-            const _ResetButton(),
-          ],
-        ));
+          ),
+          const _ProductList(),
+          const _ResetButton(),
+        ],
+      ),
+    );
   }
 
   Widget _buildOngoingDialog(BuildContext context) {
     return AlertDialog(
-      title: const Text('Ongoing Stocktaking'),
-      content: const Text('There is a stocktaking in progress. Do you want to continue?'),
+      title: Text(LocaleKeys.dialog_ongoing_stocktaking_title.locale),
+      content: Text(LocaleKeys.dialog_ongoing_stocktaking_content.locale),
       actions: [
         TextButton(
-            onPressed: () {
-              context.read<StocktakingCubit>().onResetted();
-              Navigator.of(context).maybePop();
-            },
-            child: const Text('No')),
-        TextButton(onPressed: () => Navigator.of(context).maybePop(), child: const Text('Yes')),
+          onPressed: () {
+            context.read<StocktakingCubit>().onResetted();
+            Navigator.of(context).maybePop();
+          },
+          child: Text(LocaleKeys.dialog_ongoing_stocktaking_no.locale),
+        ),
+        TextButton(
+          onPressed: () => Navigator.of(context).maybePop(),
+          child: Text(LocaleKeys.dialog_ongoing_stocktaking_no.locale),
+        ),
       ],
     );
   }
@@ -113,7 +115,7 @@ class StocktakingFAB extends StatelessWidget {
             onPressed: () {
               showDialog(
                 context: context,
-                builder: (context) => _buildDialog(context),
+                builder: (context) => _builCompletedDialog(context),
               );
             },
           );
@@ -123,18 +125,20 @@ class StocktakingFAB extends StatelessWidget {
     );
   }
 
-  AlertDialog _buildDialog(BuildContext context) {
+  AlertDialog _builCompletedDialog(BuildContext context) {
     return AlertDialog(
-      title: const Text('Complete Stocktaking'),
-      content: const Text(
-          'Do you want to complete stocktaking? This transaction cannot be undone, stock quantities will be recorded.'),
+      title: Text(LocaleKeys.dialog_complete_stocktaking_title.locale),
+      content: Text(LocaleKeys.dialog_complete_stocktaking_content.locale),
       actions: [
-        TextButton(onPressed: () => Navigator.of(context).maybePop(), child: const Text('No')),
+        TextButton(
+          onPressed: () => Navigator.of(context).maybePop(),
+          child: Text(LocaleKeys.dialog_complete_stocktaking_no.locale),
+        ),
         TextButton(
           onPressed: () => context.read<StocktakingCubit>().onSubmitted().then(
                 (value) => Navigator.of(context).maybePop(),
               ),
-          child: const Text('Yes'),
+          child: Text(LocaleKeys.dialog_complete_stocktaking_yes.locale),
         ),
       ],
     );
@@ -195,16 +199,39 @@ class _ScannedDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final state = context.read<StocktakingCubit>().state;
     if (state.isScannedBarcodeUnknown) {
-      return _buildUnkown(context, state);
+      return _buildUnkownDialog(context, state);
     } else {
-      return _buildKnown(context, state);
+      return _buildKnownDialog(context, state);
     }
   }
 
-  AlertDialog _buildKnown(BuildContext context, StocktakingState state) {
+  AlertDialog _buildUnkownDialog(BuildContext context, StocktakingState state) {
+    return AlertDialog(
+      title: Text(LocaleKeys.dialog_stocktaking_unknown_title.locale),
+      content: Text(LocaleKeys.dialog_stocktaking_unknown_content.locale),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).maybePop(),
+          child: Text(LocaleKeys.dialog_stocktaking_unknown_no.locale),
+        ),
+        TextButton(
+          onPressed: () async {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => ProductAddEditPage(defaultBarcodes: [state.scannedBarcode])))
+                .then((value) => Navigator.of(context).maybePop());
+          },
+          child: Text(LocaleKeys.dialog_stocktaking_unknown_yes.locale),
+        ),
+      ],
+    );
+  }
+
+  AlertDialog _buildKnownDialog(BuildContext context, StocktakingState state) {
     final Product product = context.read<StocktakingCubit>().scannedProduct;
     return AlertDialog(
-      title: state.isEntryAlreadyAdded ? Text('Override Stock\n${product.name}') : Text('Add Stock\n${product.name}'),
+      title: state.isEntryAlreadyAdded
+          ? Text(LocaleKeys.dialog_stocktaking_known_title_overwrite.localeWithArgs([product.name]))
+          : Text(LocaleKeys.dialog_stocktaking_known_title_add.localeWithArgs([product.name])),
       icon: CachedNetworkImage(
         height: 50,
         width: 50,
@@ -216,8 +243,8 @@ class _ScannedDialog extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           state.isEntryAlreadyAdded
-              ? const Text('The product has already been added. You will overwrite the stock quantity.')
-              : const Text('Enter the stock quantity for the product.'),
+              ? Text(LocaleKeys.dialog_stocktaking_known_content_overwrite.locale)
+              : Text(LocaleKeys.dialog_stocktaking_known_content_add.locale),
           BlocBuilder<StocktakingCubit, StocktakingState>(
             buildWhen: (p, c) => p.stockQuantityForm != c.stockQuantityForm,
             builder: (context, state) {
@@ -227,15 +254,17 @@ class _ScannedDialog extends StatelessWidget {
                   autofocus: true,
                   inputFormatters: <TextInputFormatter>[
                     FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                    FilteringTextInputFormatter.digitsOnly,
+                    FilteringTextInputFormatter.digitsOnly
                   ],
                   decoration: InputDecoration(
-                    border: const OutlineInputBorder(),
-                    labelText: 'Stock Quantity',
-                    errorText: state.stockQuantityForm.displayError != null ? 'invalid stock quantity' : null,
+                    icon: const Icon(Icons.numbers),
+                    labelText: LocaleKeys.form_stock_quantity_label.locale,
+                    errorText: state.stockQuantityForm.errorText,
+                    errorMaxLines: 2,
                   ),
-                  initialValue: state.stockQuantityForm.value,
                   keyboardType: TextInputType.number,
+                  textInputAction: TextInputAction.done,
+                  initialValue: state.stockQuantityForm.value,
                   onChanged: (value) => context.read<StocktakingCubit>().onStockQuantityChanged(value),
                 ),
               );
@@ -244,7 +273,12 @@ class _ScannedDialog extends StatelessWidget {
         ],
       ),
       actions: [
-        TextButton(onPressed: () => Navigator.of(context).maybePop(), child: const Text('Cancel')),
+        TextButton(
+          onPressed: () => Navigator.of(context).maybePop(),
+          child: state.isEntryAlreadyAdded
+              ? Text(LocaleKeys.dialog_stocktaking_known_no_overwrite.locale)
+              : Text(LocaleKeys.dialog_stocktaking_known_no_add.locale),
+        ),
         BlocBuilder<StocktakingCubit, StocktakingState>(
           builder: (context, state) {
             return TextButton(
@@ -254,33 +288,11 @@ class _ScannedDialog extends StatelessWidget {
                       Navigator.maybePop(context);
                     }
                   : null,
-              child: const Text('Ok'),
+              child: state.isEntryAlreadyAdded
+                  ? Text(LocaleKeys.dialog_stocktaking_known_yes_overwrite.locale)
+                  : Text(LocaleKeys.dialog_stocktaking_known_yes_add.locale),
             );
           },
-        ),
-      ],
-    );
-  }
-
-  AlertDialog _buildUnkown(BuildContext context, StocktakingState state) {
-    return AlertDialog(
-      title: const Text('Unknown Product Scanned'),
-      content: const Text('The scanned barcode does not belong to any product. Would you like to add a new product?'),
-      actions: [
-        TextButton(onPressed: () => Navigator.of(context).maybePop(), child: const Text('No')),
-        TextButton(
-          onPressed: () async {
-            Navigator.of(context)
-                .push(
-                  MaterialPageRoute(
-                    builder: (context) => ProductAddEditPage(
-                      defaultBarcodes: [state.scannedBarcode],
-                    ),
-                  ),
-                )
-                .then((value) => Navigator.of(context).maybePop());
-          },
-          child: const Text('Yes'),
         ),
       ],
     );
@@ -300,20 +312,7 @@ class _ResetButton extends StatelessWidget {
             onPressed: () {
               showDialog(
                 context: context,
-                builder: (context) => AlertDialog(
-                  title: const Text('Do you want to reset stocktaking?'),
-                  content: const Text('This transaction cannot be undone, stocktaking will be reseted.'),
-                  actions: [
-                    TextButton(onPressed: () => Navigator.of(context).maybePop(), child: const Text('No')),
-                    TextButton(
-                      onPressed: () {
-                        context.read<StocktakingCubit>().onResetted();
-                        Navigator.of(context).maybePop();
-                      },
-                      child: const Text('Yes'),
-                    ),
-                  ],
-                ),
+                builder: (context) => _buildResetDialog(context),
               );
             },
             child: const Text(
@@ -324,6 +323,26 @@ class _ResetButton extends StatelessWidget {
         }
         return const SizedBox();
       },
+    );
+  }
+
+  AlertDialog _buildResetDialog(BuildContext context) {
+    return AlertDialog(
+      title: Text(LocaleKeys.dialog_stocktaking_reset_title.locale),
+      content: Text(LocaleKeys.dialog_stocktaking_reset_content.locale),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).maybePop(),
+          child: Text(LocaleKeys.dialog_stocktaking_reset_no.locale),
+        ),
+        TextButton(
+          onPressed: () {
+            context.read<StocktakingCubit>().onResetted();
+            Navigator.of(context).maybePop();
+          },
+          child: Text(LocaleKeys.dialog_stocktaking_reset_yes.locale),
+        ),
+      ],
     );
   }
 }

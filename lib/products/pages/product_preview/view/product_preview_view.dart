@@ -3,6 +3,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ob_product/ob_product.dart';
+import 'package:obase_barcode/core/extensions/context_extension.dart';
+import 'package:obase_barcode/core/lang/locale_keys.g.dart';
 import '../../../../core/constants/app_contants.dart';
 import '../../product_add_edit/view/product_add_edit_page.dart';
 
@@ -103,7 +105,10 @@ class _ProductName extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Name', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+        Text(
+          LocaleKeys.product_preview_title_name.locale,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        ),
         Text(name),
       ],
     );
@@ -122,7 +127,10 @@ class _ProductDescription extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Description', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+        Text(
+          LocaleKeys.product_preview_title_description.locale,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        ),
         Text(description),
       ],
     );
@@ -141,7 +149,10 @@ class _ProductStockQuantity extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Stock Quantity', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+        Text(
+          LocaleKeys.product_preview_title_stock_quantity.locale,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        ),
         Text('$stockQuantity'),
       ],
     );
@@ -160,9 +171,9 @@ class _BarcodeList extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Barcodes',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        Text(
+          LocaleKeys.product_preview_title_barcodes.locale,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
         ),
         AppConstants.halfItemSeperator,
         ...barcodes.map((e) => _buildBarcode('$e')).toList(),

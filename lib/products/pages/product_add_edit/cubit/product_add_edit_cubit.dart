@@ -76,7 +76,7 @@ class ProductAddEditCubit extends Cubit<ProductAddEditState> {
     if (value != state.scannedBarcode) {
       emit(state.copyWith(
         scannedBarcode: value,
-        scannerStatus: AddEditScannerStatus.initial,
+        scannerStatus: ProductAddEditScannerStatus.initial,
       ));
     }
   }
@@ -86,7 +86,7 @@ class ProductAddEditCubit extends Cubit<ProductAddEditState> {
     if (state.barcodes.contains(scannedBarcode)) {
       emit(state.copyWith(
         scannedBarcode: -1,
-        scannerStatus: AddEditScannerStatus.alreadyInProduct,
+        scannerStatus: ProductAddEditScannerStatus.alreadyInProduct,
       ));
       return;
     }
@@ -95,7 +95,7 @@ class ProductAddEditCubit extends Cubit<ProductAddEditState> {
       if (barcode != null) {
         emit(state.copyWith(
           scannedBarcode: -1,
-          scannerStatus: AddEditScannerStatus.alreadyInUse,
+          scannerStatus: ProductAddEditScannerStatus.alreadyInUse,
         ));
         return;
       }
@@ -105,7 +105,7 @@ class ProductAddEditCubit extends Cubit<ProductAddEditState> {
     } catch (_) {
       emit(state.copyWith(
         scannedBarcode: -1,
-        scannerStatus: AddEditScannerStatus.failure,
+        scannerStatus: ProductAddEditScannerStatus.failure,
       ));
       return;
     }
@@ -114,7 +114,7 @@ class ProductAddEditCubit extends Cubit<ProductAddEditState> {
     emit(state.copyWith(
       barcodes: barcodes,
       scannedBarcode: -1,
-      scannerStatus: AddEditScannerStatus.success,
+      scannerStatus: ProductAddEditScannerStatus.success,
     ));
   }
 

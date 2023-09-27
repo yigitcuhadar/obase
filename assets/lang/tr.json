@@ -48,6 +48,40 @@
             "content": "Yoksaymak istediğinizden emin misiniz? Değişiklikler kaybolacak.",
             "no": "İptal",
             "yes": "Yoksay"
+        },
+        "ongoing_stocktaking": {
+            "title": "Devam Eden Stok Sayımı",
+            "content": "Yarıda kalmış stok sayımı var. Devam etmek istiyor musunuz?",
+            "no": "Sil",
+            "yes": "Devam et"
+        },
+        "complete_stocktaking": {
+            "title": "Stok Sayımı Tamamlama",
+            "content": "Stok sayımını tamamlamak istiyor musunuz? Bu işlem geri alınamaz, stok miktarları kaydedilecektir.",
+            "no": "İptal",
+            "yes": "Tamamla"
+        },
+        "stocktaking_known": {
+            "title_overwrite": "Değiştir {}",
+            "title_add": "Ekle {}",
+            "content_overwrite": "Ürün zaten eklenmiştir. Stok miktarını değiştireceksiniz.",
+            "content_add": "Ürün için stok miktarını girin.",
+            "no_overwrite": "İptal",
+            "no_add": "İptal",
+            "yes_overwrite": "Değiştir",
+            "yes_add": "Ekle"
+        },
+        "stocktaking_unknown": {
+            "title": "Bilinmeyen Ürün",
+            "content": "Taranan barkod herhangi bir ürüne ait değil. Yeni bir ürün eklemek ister misiniz?",
+            "no": "İptal",
+            "yes": "Ekle"
+        },
+        "stocktaking_reset": {
+            "title": "Stok Sayımı Sıfırlama",
+            "content": "Bu işlem geri alınamaz, stok sayımı sıfırlanacaktır.",
+            "no": "İptal",
+            "yes": "Sıfırla"
         }
     },
     "exception": {
@@ -99,15 +133,28 @@
         "submit_button_add": "Ekle",
         "submit_button_edit": "Güncelle",
         "delete_button": "Sil",
-        "message_success_add" : "Ürün başarıyla eklendi!",
-        "message_success_edit" : "Ürün başarıyla güncellendi!",
-        "message_failure_add" : "Ürün ekleme başarısız!",
-        "message_failure_edit" : "Ürün güncelleme başarısız!",
+        "message_success_add": "Ürün başarıyla eklendi!",
+        "message_success_edit": "Ürün başarıyla güncellendi!",
+        "message_failure_add": "Ürün ekleme başarısız!",
+        "message_failure_edit": "Ürün güncelleme başarısız!",
         "barcode_message_initial": "Barkodu taramak için kadraja alın",
         "barcode_message_scanned": "Barkod tarandı!",
         "barcode_message_alreadyInProduct": "Barkod zaten ürüne eklendi!",
         "barcode_message_alreadyInUse": "Barkod başka bir ürün tarafından kullanımda!",
         "barcode_message_failure": "Barkod ekleme başarısız!",
         "barcode_message_success": "Barkod başarıyla eklendi!"
+    },
+    "product_preview": {
+        "popup_edit_title": "Düzenle",
+        "title_name": "Ürün İsmi",
+        "title_description": "Ürün Açıklaması",
+        "title_stock_quantity": "Stok Miktarı",
+        "title_barcodes": "Barkodlar"
+    },
+    "stocktaking": {
+        "title": "Stok Sayımı",
+        "message_success": "Stok sayımı başarıyla tamamlandı!",
+        "message_failure": "Stok sayımı başarısız!",
+        "reset_button": "Stok Sayımını Sıfırla"
     }
 }

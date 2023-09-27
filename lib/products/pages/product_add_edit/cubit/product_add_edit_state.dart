@@ -1,6 +1,6 @@
 part of 'product_add_edit_cubit.dart';
 
-enum AddEditScannerStatus { initial, scanned, alreadyInProduct, alreadyInUse, failure, success }
+enum ProductAddEditScannerStatus { initial, scanned, alreadyInProduct, alreadyInUse, failure, success }
 
 class ProductAddEditState extends Equatable {
   final int? id;
@@ -11,7 +11,7 @@ class ProductAddEditState extends Equatable {
   final List<int> barcodes;
   final bool isValid;
   final FormzSubmissionStatus productStatus;
-  final AddEditScannerStatus scannerStatus;
+  final ProductAddEditScannerStatus scannerStatus;
   final int scannedBarcode;
 
   bool get isAddScreen => id == null;
@@ -35,7 +35,7 @@ class ProductAddEditState extends Equatable {
     this.barcodes = const [],
     this.isValid = false,
     this.productStatus = FormzSubmissionStatus.initial,
-    this.scannerStatus = AddEditScannerStatus.initial,
+    this.scannerStatus = ProductAddEditScannerStatus.initial,
     this.scannedBarcode = -1,
   });
 
@@ -49,7 +49,7 @@ class ProductAddEditState extends Equatable {
         barcodes = product.barcodes,
         isValid = true,
         productStatus = FormzSubmissionStatus.initial,
-        scannerStatus = AddEditScannerStatus.initial,
+        scannerStatus = ProductAddEditScannerStatus.initial,
         scannedBarcode = -1;
   @override
   List<Object?> get props => [
@@ -74,7 +74,7 @@ class ProductAddEditState extends Equatable {
     List<int>? barcodes,
     bool? isValid,
     FormzSubmissionStatus? productStatus,
-    AddEditScannerStatus? scannerStatus,
+    ProductAddEditScannerStatus? scannerStatus,
     int? scannedBarcode,
   }) {
     return ProductAddEditState(

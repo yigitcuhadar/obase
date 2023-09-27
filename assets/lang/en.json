@@ -48,6 +48,40 @@
             "content": "Are you sure you want to discard? Changes will be lost.",
             "no": "Cancel",
             "yes": "Discard"
+        },
+        "ongoing_stocktaking": {
+            "title": "Ongoing Stocktaking",
+            "content": "There is a stocktaking in progress. Do you want to continue?",
+            "no": "Discard",
+            "yes": "Continue"
+        },
+        "complete_stocktaking": {
+            "title": "Complete Stocktaking",
+            "content": "Do you want to complete stocktaking? This transaction cannot be undone, stock quantities will be recorded.",
+            "no": "Cancel",
+            "yes": "Complete"
+        },
+        "stocktaking_known": {
+            "title_overwrite": "Overwrite {}",
+            "title_add": "Add {}",
+            "content_overwrite": "The product has already been added. You will overwrite the stock quantity.",
+            "content_add": "Enter the stock quantity for the product.",
+            "no_overwrite": "Cancel",
+            "no_add": "Cancel",
+            "yes_overwrite": "Overwrite",
+            "yes_add": "Add"
+        },
+        "stocktaking_unknown": {
+            "title": "Unknown Product",
+            "content": "The scanned barcode does not belong to any product. Would you like to add a new product?",
+            "no": "Cancel",
+            "yes": "Add"
+        },
+        "stocktaking_reset": {
+            "title": "Reset Stocktaking",
+            "content": "This transaction cannot be undone, stocktaking will be reseted.",
+            "no": "Cancel",
+            "yes": "Reset"
         }
     },
     "exception": {
@@ -109,5 +143,18 @@
         "barcode_message_alreadyInUse": "Barcode is being used for another product!",
         "barcode_message_failure": "Barcode could not be added!",
         "barcode_message_success": "Barcode successfully added!"
+    },
+    "product_preview": {
+        "popup_edit_title": "Edit",
+        "title_name": "Product Name",
+        "title_description": "Product Description",
+        "title_stock_quantity": "Stock Quantity",
+        "title_barcodes": "Barcodes"
+    },
+    "stocktaking": {
+        "title": "Stoctaking",
+        "message_success": "Stocktaking successfully completed!",
+        "message_failure": "Stocktaking failed!",
+        "reset_button": "Reset Stocktaking"
     }
 }
