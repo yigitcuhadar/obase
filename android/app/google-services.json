@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "197762015084",
+    "project_id": "obase-fca43",
+    "storage_bucket": "obase-fca43.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:197762015084:android:310f28ce36227539225d49",
+        "android_client_info": {
+          "package_name": "com.example.obase_barcode"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "197762015084-j4ao262k13fbbgfl6t12sha6o08jhh74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8OstwiuDbWENBfvR4Yg9xaHi2V7Ovolk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "197762015084-j4ao262k13fbbgfl6t12sha6o08jhh74.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "197762015084-qfto0m9bff711tg2pgh9716n4opd2jie.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.obaseBarcode.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

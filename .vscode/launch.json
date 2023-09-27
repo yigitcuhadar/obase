@@ -1,0 +1,65 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "obase_barcode",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "obase_barcode (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "obase_barcode (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "ob_auth",
+            "cwd": "packages/ob_auth",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "ob_auth (profile mode)",
+            "cwd": "packages/ob_auth",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "ob_auth (release mode)",
+            "cwd": "packages/ob_auth",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "ob_product",
+            "cwd": "packages/ob_product",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "ob_product (profile mode)",
+            "cwd": "packages/ob_product",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "ob_product (release mode)",
+            "cwd": "packages/ob_product",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

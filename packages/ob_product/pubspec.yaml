@@ -1,0 +1,25 @@
+name: ob_product
+description: Obase product package
+version: 0.0.1
+publish_to: none
+
+homepage:
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  equatable: ^2.0.5
+  sqflite: ^2.3.0
+  path_provider: ^2.1.1
+  formz: ^0.6.0
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:

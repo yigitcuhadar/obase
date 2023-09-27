@@ -1,0 +1,107 @@
+{
+    "form": {
+        "email": {
+            "label": "Email",
+            "invalid_error": "Please ensure the email entered is valid",
+            "empty_error": "Please enter an email"
+        },
+        "password": {
+            "label": "Password",
+            "invalid_error": "Password must be at least 8 characters and contain at least one letter and number",
+            "empty_error": "Please enter a password"
+        },
+        "confirmed_password": {
+            "label": "Confirmed Password",
+            "invalid_error": "Passwords must match",
+            "empty_error": "Please enter a password"
+        },
+        "product_name": {
+            "label": "Product Name",
+            "invalid_error": "Product name must be at least 4 and at most 20 characters",
+            "empty_error": "Please enter a product name"
+        },
+        "product_description": {
+            "label": "Product Description",
+            "invalid_error": "Product description must be at least 8 and at most 80 characters",
+            "empty_error": "Please enter a product description"
+        },
+        "product_photo_url": {
+            "label": "Product Photo Url",
+            "invalid_error": "Please ensure the photo url entered is valid",
+            "empty_error": "Please enter an photo url"
+        },
+        "stock_quantity": {
+            "label": "Stock Quantity",
+            "invalid_error": "Stock quantity must be at least 0 and at most 9999",
+            "empty_error": "Please enter a stock quantity"
+        }
+    },
+    "dialog": {
+        "delete_product": {
+            "title": "Delete Product",
+            "content": "This product will be permanently deleted.",
+            "no": "Cancel",
+            "yes": "Delete"
+        },
+        "unsaved_changes": {
+            "title": "Unsaved Changes",
+            "content": "Are you sure you want to discard? Changes will be lost.",
+            "no": "Cancel",
+            "yes": "Discard"
+        }
+    },
+    "exception": {
+        "auth": {
+            "invalid_email": "Invalid Email",
+            "user_disabled": "User disabled",
+            "user_not_found": "User Not Found",
+            "wrong_password": "Wrong Password",
+            "email_already_in_use": "Email Already In Use",
+            "invalid_credential": "Invalid Credential",
+            "operation_not_allowed": "Operation Not Allowed",
+            "weak_password": "Weak Password",
+            "unknown": "Unknown"
+        }
+    },
+    "account": {
+        "title": "Account",
+        "settings": {
+            "lang": "Change Language",
+            "logout": "Logout"
+        }
+    },
+    "authentication": {
+        "title": "Welcome",
+        "login_button": "Login",
+        "signup_button": "Signup"
+    },
+    "login": {
+        "title": "Login",
+        "submit_button": "Login",
+        "signup_button": "Create Account"
+    },
+    "signup": {
+        "title": "Create Account",
+        "submit_button": "Signup",
+        "login_button": "Have An Account?"
+    },
+    "home": {
+        "navigation": {
+            "all_products": "All Products",
+            "stocktaking": "Stocktaking",
+            "account": "Account"
+        }
+    },
+    "add_edit_product": {
+        "title_add": "Add Product",
+        "title_edit": "Edit Product",
+        "title_barcodes": "Barcodes",
+        "submit_button_add": "Add",
+        "submit_button_edit": "Update",
+        "delete_button": "Delete",
+        "message_success_add" : "Product successfully added!",
+        "message_success_edit" : "Product successfully updated!",
+        "message_failure_add" : "Product could not be added!",
+        "message_failure_edit" : "Product could not be updated!"
+    }
+}

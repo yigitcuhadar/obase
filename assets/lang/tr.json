@@ -1,0 +1,107 @@
+{
+    "form": {
+        "email": {
+            "label": "E-Posta",
+            "invalid_error": "Lütfen girilen e-postanın geçerli olduğundan emin olun",
+            "empty_error": "Lütfen bir e-posta girin"
+        },
+        "password": {
+            "label": "Parola",
+            "invalid_error": "Parola en az 8 karakterden oluşmalı ve en az bir harf ve rakam içermelidir",
+            "empty_error": "Lütfen bir parola girin"
+        },
+        "confirmed_password": {
+            "label": "Parola Tekrar",
+            "invalid_error": "Parolalar eşleşmelidir",
+            "empty_error": "Lütfen bir parola girin"
+        },
+        "product_name": {
+            "label": "Ürün Adı",
+            "invalid_error": "Ürün adı en az 4, en fazla 20 karakterden oluşmalı",
+            "empty_error": "Lütfen ürün adı girin"
+        },
+        "product_description": {
+            "label": "Ürün Açıklaması",
+            "invalid_error": "Ürün açıklaması en az 8, en fazla 80 karakterden oluşmalı",
+            "empty_error": "Lütfen ürün açıklaması girin"
+        },
+        "product_photo_url": {
+            "label": "Ürün Fotoğraf Bağlantısı",
+            "invalid_error": "Lütfen girilen fotoğraf bağlantısının geçerli olduğundan emin olun",
+            "empty_error": "Lütfen bir fotoğraf bağlantısı girin"
+        },
+        "stock_quantity": {
+            "label": "Stok Miktarı",
+            "invalid_error": "Stok miktarı en az 0, en fazla 9999 olmalı",
+            "empty_error": "Lütfen stok miktarı girin"
+        }
+    },
+    "dialog": {
+        "delete_product": {
+            "title": "Ürün Silme",
+            "content": "Bu ürün kalıcı olarak silinecektir.",
+            "no": "İptal",
+            "yes": "Sil"
+        },
+        "unsaved_changes": {
+            "title": "Kaydedilmemiş Değişiklikler",
+            "content": "Yoksaymak istediğinizden emin misiniz? Değişiklikler kaybolacak.",
+            "no": "İptal",
+            "yes": "Yoksay"
+        }
+    },
+    "exception": {
+        "auth": {
+            "invalid_email": "Geçersiz E-posta",
+            "user_disabled": "Kullanıcı Devre Dışı",
+            "user_not_found": "Kullanıcı Bulunamadı",
+            "wrong_password": "Yanlış Parola",
+            "email_already_in_use": "E-posta Halihazırda Kullanımda",
+            "invalid_credential": "Geçersiz Kimlik Bilgisi",
+            "operation_not_allowed": "Operasyona İzin Verilmiyor",
+            "weak_password": "Zayıf Parola",
+            "unknown": "Bilinmiyor"
+        }
+    },
+    "account": {
+        "title": "Hesap",
+        "settings": {
+            "lang": "Dili Değiştir",
+            "logout": "Oturumu Kapat"
+        }
+    },
+    "authentication": {
+        "title": "Hoş Geldiniz",
+        "login_button": "Giriş Yap",
+        "signup_button": "Kaydol"
+    },
+    "login": {
+        "title": "Giriş Yapın",
+        "submit_button": "Giriş Yap",
+        "signup_button": "Hesap Oluşturun"
+    },
+    "signup": {
+        "title": "Hesap Oluşturun",
+        "submit_button": "Kaydol",
+        "login_button": "Giriş Yapın"
+    },
+    "home": {
+        "navigation": {
+            "all_products": "Tüm Ürünler",
+            "stocktaking": "Stok Sayım",
+            "account": "Hesap"
+        }
+    },
+    "add_edit_product": {
+        "title_add": "Ürün Ekleme",
+        "title_edit": "Ürün Düzenleme",
+        "title_barcodes": "Barkodlar",
+        "submit_button_add": "Ekle",
+        "submit_button_edit": "Güncelle",
+        "delete_button": "Sil",
+        "message_success_add" : "Ürün başarıyla eklendi!",
+        "message_success_edit" : "Ürün başarıyla güncellendi!",
+        "message_failure_add" : "Ürün ekleme başarısız!",
+        "message_failure_edit" : "Ürün güncelleme başarısız!"
+    }
+}

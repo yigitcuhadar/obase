@@ -1,0 +1,43 @@
+name: obase_barcode
+description: Obase Barcode Application
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  ob_product:
+    path: ./packages/ob_product/
+  ob_auth:
+    path: ./packages/ob_auth/
+  equatable: ^2.0.5
+  flutter_bloc: ^8.1.3
+  bloc: ^8.1.2
+  firebase_core: ^2.15.1
+  hydrated_bloc: ^9.1.2
+  path_provider: ^2.1.1
+  flutter_slidable: ^3.0.0
+  formz: ^0.6.0
+  cached_network_image: ^3.2.3
+  flutter_svg: ^2.0.7
+  qr_code_scanner: ^1.0.1
+  barcode: ^2.2.4
+  collection: ^1.17.2
+  easy_localization: ^3.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+
+  uses-material-design: true
+  assets:
+      - assets/lang/
