@@ -7,10 +7,10 @@ import 'package:formz/formz.dart';
 import 'package:ob_product/ob_product.dart';
 import 'package:obase_barcode/core/extensions/context_extension.dart';
 import 'package:obase_barcode/core/extensions/form_extension.dart';
+import 'package:obase_barcode/products/widgets/barcode_scanner/view/barcode_scanner_widget.dart';
 
 import '../../../../core/constants/app_contants.dart';
 import '../../../../core/lang/locale_keys.g.dart';
-import '../../../widgets/barcode_scanner.dart';
 import '../../product_add_edit/view/product_add_edit_page.dart';
 import '../cubit/stocktaking_cubit.dart';
 
@@ -37,7 +37,7 @@ class StocktakingBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state = context.read<StocktakingCubit>().state;
-    if (state.entries.isNotEmpty && state.scannedBarcode == -1) {
+    if (state.entries.isNotEmpty && state.copyWith(entries: []) == const StocktakingState()) {
       Future.delayed(
         Duration.zero,
         () => showDialog(context: context, builder: (context) => _buildOngoingDialog(context)),
@@ -54,29 +54,7 @@ class StocktakingBody extends StatelessWidget {
           ..removeCurrentSnackBar()
           ..showSnackBar(SnackBar(content: Text(message)));
       },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-            decoration: const BoxDecoration(border: Border(bottom: BorderSide())),
-            child: BarcodeScanner(
-              onScanned: (value) async {
-                await context.read<StocktakingCubit>().onBarcodeScanned(value);
-                if (context.mounted) {
-                  await showDialog(
-                    context: context,
-                    builder: (context) {
-                      return const _ScannedDialog();
-                    },
-                  );
-                }
-              },
-            ),
-          ),
-          const _ProductList(),
-          const _ResetButton(),
-        ],
-      ),
+      child: const _StocktakingBody(),
     );
   }
 
@@ -94,9 +72,54 @@ class StocktakingBody extends StatelessWidget {
         ),
         TextButton(
           onPressed: () => Navigator.of(context).maybePop(),
-          child: Text(LocaleKeys.dialog_ongoing_stocktaking_no.locale),
+          child: Text(LocaleKeys.dialog_ongoing_stocktaking_yes.locale),
         ),
       ],
+    );
+  }
+}
+
+class _StocktakingBody extends StatelessWidget {
+  const _StocktakingBody();
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            decoration: const BoxDecoration(border: Border(bottom: BorderSide())),
+            child: BarcodeScannerWidget(
+              onScanned: (value) async {
+                await context.read<StocktakingCubit>().onBarcodeScanned(value);
+                if (context.mounted) {
+                  await showDialog(
+                    context: context,
+                    builder: (context) {
+                      return const _ScannedDialog();
+                    },
+                  );
+                }
+              },
+              onSubmitted: (value) async {
+                await context.read<StocktakingCubit>().onBarcodeScanned(value);
+                if (context.mounted) {
+                  await showDialog(
+                    context: context,
+                    builder: (context) {
+                      return const _ScannedDialog();
+                    },
+                  );
+                }
+              },
+            ),
+          ),
+          const _ProductList(),
+          const _ResetButton(),
+        ],
+      ),
     );
   }
 }
@@ -315,9 +338,9 @@ class _ResetButton extends StatelessWidget {
                 builder: (context) => _buildResetDialog(context),
               );
             },
-            child: const Text(
-              'Reset Stocktaking',
-              style: TextStyle(color: Colors.red),
+            child: Text(
+              LocaleKeys.stocktaking_reset_button.locale,
+              style: const TextStyle(color: Colors.red),
             ),
           );
         }

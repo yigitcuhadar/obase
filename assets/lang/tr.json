@@ -3,17 +3,17 @@
         "email": {
             "label": "E-Posta",
             "invalid_error": "Lütfen girilen e-postanın geçerli olduğundan emin olun",
-            "empty_error": "Lütfen bir e-posta girin"
+            "empty_error": "Lütfen e-posta girin"
         },
         "password": {
             "label": "Parola",
             "invalid_error": "Parola en az 8 karakterden oluşmalı ve en az bir harf ve rakam içermelidir",
-            "empty_error": "Lütfen bir parola girin"
+            "empty_error": "Lütfen parola girin"
         },
         "confirmed_password": {
             "label": "Parola Tekrar",
             "invalid_error": "Parolalar eşleşmelidir",
-            "empty_error": "Lütfen bir parola girin"
+            "empty_error": "Lütfen parola girin"
         },
         "product_name": {
             "label": "Ürün Adı",
@@ -28,12 +28,17 @@
         "product_photo_url": {
             "label": "Ürün Fotoğraf Bağlantısı",
             "invalid_error": "Lütfen girilen fotoğraf bağlantısının geçerli olduğundan emin olun",
-            "empty_error": "Lütfen bir fotoğraf bağlantısı girin"
+            "empty_error": "Lütfen fotoğraf bağlantısı girin"
         },
         "stock_quantity": {
             "label": "Stok Miktarı",
             "invalid_error": "Stok miktarı en az 0, en fazla 9999 olmalı",
             "empty_error": "Lütfen stok miktarı girin"
+        },
+        "barcode": {
+            "label": "Barkod",
+            "invalid_error": "Barkod EAN–13 formatında olmalı",
+            "empty_error": "Lütfen barkod girin"
         }
     },
     "dialog": {
@@ -97,6 +102,11 @@
             "unknown": "Bilinmiyor"
         }
     },
+    "widget": {
+        "barcode_scanner": {
+            "open_button_title": "Barkod okuyucuyu açmak için tıklayın!"
+        }
+    },
     "account": {
         "title": "Hesap",
         "settings": {
@@ -156,5 +166,8 @@
         "message_success": "Stok sayımı başarıyla tamamlandı!",
         "message_failure": "Stok sayımı başarısız!",
         "reset_button": "Stok Sayımını Sıfırla"
+    },
+    "all_products": {
+        "title": "Tüm Ürünler"
     }
 }

@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:ob_product/ob_product.dart';
 import 'package:obase_barcode/core/constants/app_contants.dart';
+import 'package:obase_barcode/core/extensions/context_extension.dart';
+import 'package:obase_barcode/core/lang/locale_keys.g.dart';
 import 'package:obase_barcode/products/cubit/products_cubit.dart';
 import 'package:obase_barcode/products/widgets/delete_product_dialog.dart';
 
@@ -18,7 +20,7 @@ class AllProductsAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text('Products'),
+      title: Text(LocaleKeys.all_products_title.locale),
       centerTitle: true,
     );
   }

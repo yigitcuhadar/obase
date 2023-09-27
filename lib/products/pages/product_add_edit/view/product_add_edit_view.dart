@@ -13,7 +13,7 @@ import 'package:obase_barcode/core/lang/locale_keys.g.dart';
 import 'package:obase_barcode/products/widgets/delete_product_dialog.dart';
 
 import '../../../../core/constants/app_contants.dart';
-import '../../../widgets/barcode_scanner.dart';
+import '../../../widgets/barcode_scanner/view/barcode_scanner_widget.dart';
 import '../cubit/product_add_edit_cubit.dart';
 
 class ProductAddEditView extends StatelessWidget {
@@ -288,7 +288,13 @@ class _BarcodeScanner extends StatelessWidget {
               Stack(
                 alignment: Alignment.center,
                 children: [
-                  BarcodeScanner(onScanned: (value) async => context.read<ProductAddEditCubit>().onBarcodeScanned(value)),
+                  BarcodeScannerWidget(
+                    onScanned: (value) async => context.read<ProductAddEditCubit>().onBarcodeScanned(value),
+                    onSubmitted: (value) async {
+                      context.read<ProductAddEditCubit>().onBarcodeScanned(value);
+                      context.read<ProductAddEditCubit>().onBarcodeAdded();
+                    },
+                  ),
                   const _AddBarcodeButton(),
                 ],
               ),

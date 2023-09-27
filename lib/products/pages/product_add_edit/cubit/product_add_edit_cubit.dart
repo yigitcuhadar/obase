@@ -81,8 +81,14 @@ class ProductAddEditCubit extends Cubit<ProductAddEditState> {
     }
   }
 
-  void onBarcodeAdded() async {
-    final int scannedBarcode = state.scannedBarcode;
+  void onBarcodeSubmitted(int value) {
+    if (value != state.scannedBarcode) {
+      onBarcodeAdded(value);
+    }
+  }
+
+  void onBarcodeAdded([int? defaultBarcode]) async {
+    final int scannedBarcode = defaultBarcode ?? state.scannedBarcode;
     if (state.barcodes.contains(scannedBarcode)) {
       emit(state.copyWith(
         scannedBarcode: -1,

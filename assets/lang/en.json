@@ -34,6 +34,11 @@
             "label": "Stock Quantity",
             "invalid_error": "Stock quantity must be at least 0 and at most 9999",
             "empty_error": "Please enter a stock quantity"
+        },
+        "barcode": {
+            "label": "Barcode",
+            "invalid_error": "Barcode must be in EAN-13 format",
+            "empty_error": "Please enter a barcode"
         }
     },
     "dialog": {
@@ -82,6 +87,11 @@
             "content": "This transaction cannot be undone, stocktaking will be reseted.",
             "no": "Cancel",
             "yes": "Reset"
+        }
+    },
+    "widget": {
+        "barcode_scanner": {
+            "open_button_title": "Click to open barcode scanner!"
         }
     },
     "exception": {
@@ -156,5 +166,8 @@
         "message_success": "Stocktaking successfully completed!",
         "message_failure": "Stocktaking failed!",
         "reset_button": "Reset Stocktaking"
+    },
+    "all_products": {
+        "title": "All Products"
     }
 }

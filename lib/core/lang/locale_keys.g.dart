@@ -1,5 +1,7 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
+// ignore_for_file: constant_identifier_names
+
 abstract class  LocaleKeys {
   static const form_email_label = 'form.email.label';
   static const form_email_invalid_error = 'form.email.invalid_error';
@@ -29,6 +31,10 @@ abstract class  LocaleKeys {
   static const form_stock_quantity_invalid_error = 'form.stock_quantity.invalid_error';
   static const form_stock_quantity_empty_error = 'form.stock_quantity.empty_error';
   static const form_stock_quantity = 'form.stock_quantity';
+  static const form_barcode_label = 'form.barcode.label';
+  static const form_barcode_invalid_error = 'form.barcode.invalid_error';
+  static const form_barcode_empty_error = 'form.barcode.empty_error';
+  static const form_barcode = 'form.barcode';
   static const form = 'form';
   static const dialog_delete_product_title = 'dialog.delete_product.title';
   static const dialog_delete_product_content = 'dialog.delete_product.content';
@@ -81,6 +87,9 @@ abstract class  LocaleKeys {
   static const exception_auth_unknown = 'exception.auth.unknown';
   static const exception_auth = 'exception.auth';
   static const exception = 'exception';
+  static const widget_barcode_scanner_open_button_title = 'widget.barcode_scanner.open_button_title';
+  static const widget_barcode_scanner = 'widget.barcode_scanner';
+  static const widget = 'widget';
   static const account_title = 'account.title';
   static const account_settings_lang = 'account.settings.lang';
   static const account_settings_logout = 'account.settings.logout';
@@ -131,5 +140,7 @@ abstract class  LocaleKeys {
   static const stocktaking_message_failure = 'stocktaking.message_failure';
   static const stocktaking_reset_button = 'stocktaking.reset_button';
   static const stocktaking = 'stocktaking';
+  static const all_products_title = 'all_products.title';
+  static const all_products = 'all_products';
 
 }

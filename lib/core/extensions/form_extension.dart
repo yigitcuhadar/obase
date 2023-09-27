@@ -111,3 +111,16 @@ extension StockQuantityFormExtension on StockQuantityForm {
     }
   }
 }
+
+extension BarcodeFormExtension on BarcodeForm {
+  String? get errorText {
+    switch (displayError) {
+      case BarcodeFormValidationError.invalid:
+        return LocaleKeys.form_barcode_invalid_error.locale;
+      case BarcodeFormValidationError.empty:
+        return LocaleKeys.form_barcode_invalid_error.locale;
+      case null:
+        return null;
+    }
+  }
+}
