@@ -324,7 +324,7 @@ class _AddBarcodeButton extends StatelessWidget {
           return ElevatedButton(
             style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(_randomColor.withAlpha(128))),
             onPressed: () => context.read<ProductAddEditCubit>().onBarcodeAdded(),
-            child: Text('Add ${state.scannedBarcode}'),
+            child: Text('${state.scannedBarcode}'),
           );
         } else {
           return const SizedBox();
@@ -366,7 +366,9 @@ class _SubmitButton extends StatelessWidget {
     return BlocBuilder<ProductAddEditCubit, ProductAddEditState>(
       buildWhen: (p, c) => p.isValid != c.isValid,
       builder: (context, state) {
-        final String buttonTitle = state.isAddScreen ? 'Add' : 'Update';
+        final String buttonTitle = state.isAddScreen
+            ? LocaleKeys.add_edit_product_submit_button_add.locale
+            : LocaleKeys.add_edit_product_submit_button_edit.locale;
         return ElevatedButton(
           onPressed: state.isValid
               ? () async {
@@ -397,9 +399,9 @@ class _DeleteButton extends StatelessWidget {
               );
               if (context.mounted) Navigator.of(context).maybePop();
             },
-            child: const Text(
-              'Delete',
-              style: TextStyle(color: Colors.red),
+            child: Text(
+              LocaleKeys.add_edit_product_delete_button.locale,
+              style: const TextStyle(color: Colors.red),
             ),
           );
         }
